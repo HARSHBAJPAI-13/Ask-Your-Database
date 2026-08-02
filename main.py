@@ -68,7 +68,9 @@ def is_safe_query(sql):
 
 class QuestionRequest(BaseModel):
     question: str
-
+@app.get("/")
+def root():
+    return {"message": "Ask Your Database API is running. Visit /docs for the API documentation."}
 @app.post("/ask")
 def ask(request: QuestionRequest):
     question = request.question

@@ -145,15 +145,3 @@ UI available at `http://localhost:8501`
 | Frontend | Streamlit Community Cloud | Deploys directly from GitHub, points at `app.py` |
 
 Secrets (`GROQ_API_KEY`, `DATABASE_URL`) are set as environment variables in the Render dashboard — never committed to the repo.
-
-## Future Improvements
-
-- Summarize query results in plain English with a second LLM call
-- Add query result caching to reduce repeated LLM calls
-- Support more complex questions (multi-step reasoning, follow-up questions)
-- Add authentication for multi-user access
-- Expand schema with more realistic sample data volume
-
-## License
-
-MIT

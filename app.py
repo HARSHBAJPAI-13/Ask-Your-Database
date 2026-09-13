@@ -11,7 +11,7 @@ question = st.text_input("Your question:", placeholder="e.g. What are the total 
 if st.button("Ask") and question:
     with st.spinner("Thinking..."):
         try:
-            response = requests.post(API_URL, json={"question": question})
+            response = requests.post(API_URL, json={"question": question}, timeout=60)
             data = response.json()
 
             if "error" in data:

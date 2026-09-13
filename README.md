@@ -13,7 +13,7 @@ This project demonstrates an end-to-end pipeline combining four core skills:
 
 - **ANSI SQL** — normalized relational schema with joins, aggregations, and window functions
 - **Python** — FastAPI backend that orchestrates the LLM call, safety validation, and query execution
-- **Gen AI** — an LLM (Llama 3.3 70B via Groq) converts natural language into SQL, using the database schema as context
+- **Gen AI** — an LLM (openai/gpt-oss-120b via Groq) converts natural language into SQL, using the database schema as context
 - **Cloud Fundamentals** — managed cloud database, cloud-hosted backend, environment variable/secrets management, and a cloud-hosted frontend
 
 ## Architecture
@@ -22,7 +22,7 @@ This project demonstrates an end-to-end pipeline combining four core skills:
 User (browser)
      │
      ▼
-Streamlit frontend  ──────────────►  FastAPI backend  ──────────────►  Groq API (Llama 3.3 70B)
+Streamlit frontend  ──────────────►  FastAPI backend  ──────────────►  Groq API (openai/gpt-oss-120b)
 (Streamlit Cloud)      HTTP POST      (Render, free tier)   prompt        NL → SQL translation
                         /ask                │
                                             ▼
@@ -39,7 +39,7 @@ Streamlit frontend  ──────────────►  FastAPI backe
 **Flow:**
 1. User types a question in the Streamlit UI
 2. Streamlit sends it to the FastAPI `/ask` endpoint
-3. FastAPI builds a prompt (question + schema) and sends it to Groq's Llama 3.3 70B model
+3. FastAPI builds a prompt (question + schema) and sends it to Groq's openai/gpt-oss-120b model
 4. The LLM returns a SQL query
 5. A safety check confirms the query is read-only (`SELECT` only, no `DROP`/`DELETE`/`INSERT`/etc.)
 6. The validated query runs against the Neon Postgres database
@@ -51,7 +51,7 @@ Streamlit frontend  ──────────────►  FastAPI backe
 |---|---|
 | Database | PostgreSQL, hosted on [Neon](https://neon.tech) (free tier) |
 | Backend | Python, [FastAPI](https://fastapi.tiangolo.com/), deployed on [Render](https://render.com) (free tier) |
-| Gen AI | [Groq API](https://console.groq.com) running Llama 3.3 70B |
+| Gen AI | [Groq API](https://console.groq.com) running openai/gpt-oss-120b |
 | Frontend | [Streamlit](https://streamlit.io), deployed on Streamlit Community Cloud |
 | Driver | `psycopg2-binary` |
 

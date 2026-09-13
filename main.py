@@ -50,7 +50,7 @@ Question: {question}
 SQL:"""
 
     response = client.chat.completions.create(
-        model="model="openai/gpt-oss-120b",",
+        model="model="openai/gpt-oss-120b",
         messages=[{"role": "user", "content": prompt}]
     )
     sql = response.choices[0].message.content.strip()
